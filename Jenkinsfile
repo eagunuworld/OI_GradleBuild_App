@@ -2,7 +2,6 @@ pipeline{
     agent{ label "OI_GradleBuild_App"}
     environment{
         VERSION = "${env.BUILD_ID}"
-        sonarToken = credentials('sonarQube')
     }
     stages{
         stage("sonar quality check"){
@@ -15,7 +14,8 @@ pipeline{
                 script{
                     withSonarQubeEnv(credentialsId: 'sonarToken') {
                             sh 'chmod +x gradlew'
-                            sh './gradlew sonarqube'
+                            //sh './gradlew sonarqube'
+                            sh './gradlew sonar -Dsonar.projectKey=gradlebuild_app -Dsonar.host.url=http://34.125.99.18:9000 -Dsonar.login=sqp_ab25307f13a83a6371a64bb4758d41336d41ab33'
                     }
                 }  
             }
