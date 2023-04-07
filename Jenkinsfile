@@ -2,6 +2,7 @@ pipeline{
     agent{ label "OI_GradleBuild_App"}
     environment{
         VERSION = "${env.BUILD_ID}"
+        sonarToken = credentials('sonarQube')
     }
     stages{
         stage("sonar quality check"){
@@ -12,7 +13,7 @@ pipeline{
             }
             steps{
                 script{
-                    withSonarQubeEnv(credentialsId: 'sonarQube') {
+                    withSonarQubeEnv(credentialsId: 'sonarToken') {
                             sh 'chmod +x gradlew'
                             sh './gradlew sonarqube'
                     }
