@@ -12,7 +12,7 @@ pipeline{
             }
             steps{
                 script{
-                    withSonarQubeEnv(credentialsId: 'sonarQube') {
+                    withSonarQubeEnv(credentialsId: 'sonarqube-mss-warmart-prod-jenkins-pipeline-connection', installationName: 'sonarQube') {
                             sh 'chmod +x gradlew'
                             sh './gradlew sonarqube'
                     }
