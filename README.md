@@ -9,4 +9,3 @@ when we build the code using command ```./gradlew build ``` it will generate war
 code is integrated with sonarqube plugin which help us in static code analysis 
 
 ``` ./gradlew sonarqube ```
-sonar: 94356933cc10c913b0fdb1dc58a231b4265d0e5e
