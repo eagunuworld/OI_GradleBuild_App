@@ -1,5 +1,12 @@
 pipeline{
     agent{ label "OI_GradleBuild_App"}
+
+     options {
+         buildDiscarder logRotator( artifactDaysToKeepStr: '1', artifactNumToKeepStr: '3', daysToKeepStr: '1', numToKeepStr: '3')
+         timestamps()
+         //skipDefaultCheckout(true)
+        }
+        
     environment{
         VERSION = "${env.BUILD_ID}"
     }
